@@ -20,8 +20,6 @@ type UserService interface {
 
 //userService s
 type userService struct {
-	// users []entity.User
-	// owner []entity.Owner
 }
 
 func New() UserService {

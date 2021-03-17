@@ -13,6 +13,7 @@ type UserController interface {
 	ShowUsers() []entity.User
 	ShowOwners() []entity.Owner
 	QueryOwners1(c *gin.Context) entity.Owner
+	PostOwner(c *gin.Context) entity.Owner
 	Add(c *gin.Context) entity.User
 	Update(c *gin.Context) entity.User
 	Delete(c *gin.Context) entity.User
@@ -43,6 +44,14 @@ func (c controller) Add(ctx *gin.Context) entity.User {
 	c.service.Add(user)
 	return user
 }
+
+func (c controller) PostOwner(ctx *gin.Context) entity.Owner {
+	var owner entity.Owner
+	ctx.BindJSON(&owner)
+	owner = c.service.QueryOwners1(owner)
+	return owner
+}
+
 func (c controller) QueryOwners1(ctx *gin.Context) entity.Owner {
 	var owner entity.Owner
 	var owner1 entity.Owner

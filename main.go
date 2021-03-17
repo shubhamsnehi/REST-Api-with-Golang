@@ -21,6 +21,10 @@ func main() {
 	r.GET("/ownerid", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.QueryOwners1(ctx))
 	})
+	r.POST("/owner", func(ctx *gin.Context) {
+		ctx.JSON(200, UserController.PostOwner(ctx))
+	})
+
 	//----------------------------------------------
 	r.GET("/users", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.ShowUsers())
