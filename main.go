@@ -15,10 +15,19 @@ var (
 
 func main() {
 	r := gin.Default()
+	r.GET("/owner", func(ctx *gin.Context) {
+		ctx.JSON(200, UserController.ShowOwners())
+	})
+	r.GET("/ownerid", func(ctx *gin.Context) {
+		ctx.JSON(200, UserController.QueryOwners1(ctx))
+	})
+	// r.GET("/param/:fname/:lname", func(ctx *gin.Context) {
+	// 	ctx.JSON(200, UserController.ParamString(ctx))
+	// })
+	//----------------------------------------------
 	r.GET("/users", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.ShowUsers())
 	})
-
 	r.POST("/users", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.Add(ctx))
 	})
@@ -28,7 +37,7 @@ func main() {
 	r.DELETE("/users", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.Delete(ctx))
 	})
-	r.GET("/usr", controllers.QueryString())
+	r.GET("/usr", controllers.QueryOwners())
 
 	r.GET("/param/:fname/:lname", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.ParamString(ctx))
