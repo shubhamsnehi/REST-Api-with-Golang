@@ -3,13 +3,10 @@ package service
 import (
 	"log"
 
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/jinzhu/gorm"
 	"github.com/shubhamsnehi/gin-demo/database"
 	"github.com/shubhamsnehi/gin-demo/entity"
 )
 
-var db *gorm.DB
 var err error
 
 type UserService interface {
@@ -23,8 +20,8 @@ type UserService interface {
 
 //userService s
 type userService struct {
-	users []entity.User
-	owner []entity.Owner
+	// users []entity.User
+	// owner []entity.Owner
 }
 
 func New() UserService {
@@ -57,14 +54,9 @@ func (service *userService) ShowUsers() []entity.User {
 func (service *userService) ShowOwners() []entity.Owner {
 	result := []entity.Owner{}
 	books := []entity.Book{}
-	db, err = gorm.Open("mysql", "root:@tcp(localhost)/test") //DB connection
-	if err != nil {
-		log.Println("Could not connect")
-	}
-	db.Find(&result)
-	log.Println(len(result))
+	database.DB.Find(&result)
 	for i := 0; i < len(result); i++ {
-		db.Table("books").Where("owner_id = ?", i+1).Scan(&books)
+		database.DB.Table("books").Where("owner_id = ?", i+1).Scan(&books)
 		result[i].Books = books
 	}
 	return result
@@ -73,13 +65,8 @@ func (service *userService) ShowOwners() []entity.Owner {
 func (service *userService) QueryOwners1(owner entity.Owner) entity.Owner {
 	result := entity.Owner{}
 	books := []entity.Book{}
-	log.Println("ID:",owner.Id)
-	db, err = gorm.Open("mysql", "root:@tcp(localhost)/test") //DB connection
-	if err != nil {
-		log.Println("Could not connect")
-	}
-	db.Find(&result,owner.Id)
-		db.Table("books").Where("owner_id = ?", owner.Id).Scan(&books)
-		result.Books = books
+	database.DB.Find(&result, owner.Id)
+	database.DB.Table("books").Where("owner_id = ?", owner.Id).Scan(&books)
+	result.Books = books
 	return result
 }

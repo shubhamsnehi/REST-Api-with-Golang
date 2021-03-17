@@ -21,9 +21,6 @@ func main() {
 	r.GET("/ownerid", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.QueryOwners1(ctx))
 	})
-	// r.GET("/param/:fname/:lname", func(ctx *gin.Context) {
-	// 	ctx.JSON(200, UserController.ParamString(ctx))
-	// })
 	//----------------------------------------------
 	r.GET("/users", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.ShowUsers())
@@ -37,7 +34,7 @@ func main() {
 	r.DELETE("/users", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.Delete(ctx))
 	})
-	r.GET("/usr", controllers.QueryOwners())
+	r.GET("/usr", controllers.QueryString())
 
 	r.GET("/param/:fname/:lname", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.ParamString(ctx))

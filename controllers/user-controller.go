@@ -16,8 +16,6 @@ type UserController interface {
 	Add(c *gin.Context) entity.User
 	Update(c *gin.Context) entity.User
 	Delete(c *gin.Context) entity.User
-	// QueryOwners()
-	// QueryString(c *gin.Context) entity.User
 	ParamString(c *gin.Context) entity.User
 }
 
@@ -58,14 +56,11 @@ func (c controller) QueryOwners1(ctx *gin.Context) entity.Owner {
 	return owner1
 }
 
-func QueryOwners() gin.HandlerFunc {
+func QueryString() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		var user entity.Owner
-		id, _ := strconv.ParseInt(ctx.Query("id"), 10, 32)
-		log.Println("ID:", id)
-		// owner.Id = int(id)
-		user.Id = int(id)
-		// user.Name = ctx.Query("name")
+		var user entity.User
+		user.ID = ctx.Query("id")
+		user.Name = ctx.Query("name")
 		ctx.JSON(200, user)
 	}
 }
