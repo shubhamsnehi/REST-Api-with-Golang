@@ -43,7 +43,7 @@ func main() {
 	r.GET("/param/:fname/:lname", func(ctx *gin.Context) {
 		ctx.JSON(200, UserController.ParamString(ctx))
 	})
-	r.Run()
+	r.Run(":8081")
 }
 
 // r.GET("/user/:name", func(c *gin.Context) {
