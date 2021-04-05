@@ -22,7 +22,7 @@ type User []struct {
 	Name string `json:"name"`
 }
 
-func TestHelloWorld(t *testing.T) {
+func TestShowUsers(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	handler := New().ShowUsers()
 	router := gin.Default()
