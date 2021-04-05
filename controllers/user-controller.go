@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/shubhamsnehi/gin-demo/entity"
-	"github.com/shubhamsnehi/gin-demo/service"
+	"github.com/shubhamsnehi/REST-Api-with-Golang/entity"
+	"github.com/shubhamsnehi/REST-Api-with-Golang/service"
 )
 
 type UserController interface {

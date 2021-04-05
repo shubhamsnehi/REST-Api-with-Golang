@@ -4,8 +4,8 @@ import (
 	// "fmt"
 
 	"github.com/gin-gonic/gin"
-	"github.com/shubhamsnehi/gin-demo/controllers"
-	"github.com/shubhamsnehi/gin-demo/service"
+	"github.com/shubhamsnehi/REST-Api-with-Golang/controllers"
+	"github.com/shubhamsnehi/REST-Api-with-Golang/service"
 )
 
 var (
