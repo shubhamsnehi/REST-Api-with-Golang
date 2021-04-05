@@ -45,7 +45,7 @@ func (service *userService) Delete(user entity.User) {
 
 func (service *userService) ShowUsers() []entity.User {
 	user := []entity.User{}
-	database.DB.Table("usertbs").Find(&user)
+	database.DB.Table("users").Find(&user)
 	return user
 }
 
