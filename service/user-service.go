@@ -3,8 +3,8 @@ package service
 import (
 	"log"
 
-	"github.com/shubhamsnehi/gin-demo/database"
-	"github.com/shubhamsnehi/gin-demo/entity"
+	"github.com/shubhamsnehi/REST-Api-with-Golang/database"
+	"github.com/shubhamsnehi/REST-Api-with-Golang/entity"
 )
 
 var err error
